@@ -58,7 +58,15 @@ try({
       )
   )
   if (!(Sys.info()[["effective_user"]] %in% c("fabio", "favstats"))) {
-    install.packages("arrow", repos = "https://packagemanager.rstudio.com/all/__linux__/focal/latest")
+    suppressMessages(
+      suppressWarnings(
+        install.packages(
+          "arrow", 
+          repos = "https://packagemanager.rstudio.com/all/__linux__/focal/latest", 
+          quiet = TRUE
+        )
+      )
+    )
     arrow::install_arrow(verbose = F) # verbose output to debug install errors
   }
   # print(arrow::arrow_info())
